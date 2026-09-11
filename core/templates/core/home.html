@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Início | ProjetoIF{% endblock %}
+
+{% block content %}
+
+<section class="home">
+
+    <div class="home-texto">
+
+        <span class="etiqueta">IFRN • EXTENSÃO</span>
+
+        <h1>
+            Projetos que transformam
+            a comunidade.
+        </h1>
+
+        <p>
+            Conheça os projetos de extensão desenvolvidos
+            pelos alunos do IFRN e descubra como o conhecimento
+            pode contribuir para a sociedade.
+        </p>
+
+        <a href="{% url 'lista_projetos' %}" class="botao">
+            Conhecer projetos →
+        </a>
+
+    </div>
+
+
+    <div class="home-imagem">
+
+        <div class="imagem-conteudo">
+
+            <span class="simbolo">◆</span>
+
+            <h2>ProjetoIF</h2>
+
+            <p>
+                Conhecimento, inovação e transformação social.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="home-info">
+
+    <div class="info-item">
+
+        <span class="info-numero">01</span>
+
+        <h3>Projetos de extensão</h3>
+
+        <p>
+            Iniciativas que aproximam o instituto
+            da comunidade.
+        </p>
+
+    </div>
+
+
+    <div class="info-item">
+
+        <span class="info-numero">02</span>
+
+        <h3>Participação estudantil</h3>
+
+        <p>
+            Alunos envolvidos em ações de ensino,
+            pesquisa e extensão.
+        </p>
+
+    </div>
+
+
+    <div class="info-item">
+
+        <span class="info-numero">03</span>
+
+        <h3>Impacto social</h3>
+
+        <p>
+            Conhecimento aplicado para contribuir
+            com a sociedade.
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}

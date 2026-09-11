@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ aluno.nome }}{% endblock %}
+
+{% block content %}
+<a class="back" href="{% url 'lista_projetos' %}">← Voltar para projetos</a>
+
+<section class="detail">
+    <div class="detail-header profile-header">
+        <div class="avatar large">{{ aluno.nome|first|upper }}</div>
+        <div>
+            <span class="eyebrow">PERFIL DO ALUNO</span>
+            <h1>{{ aluno.nome }}</h1>
+            <p>Matrícula: {{ aluno.matricula }}</p>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        {% if aluno.perfil_academico %}
+        <h2>Perfil acadêmico</h2>
+        <p class="description">{{ aluno.perfil_academico.biografia|linebreaks }}</p>
+        <p><a class="button" href="{{ aluno.perfil_academico.link_lattes }}" target="_blank">Acessar Lattes ↗</a></p>
+        {% endif %}
+
+        <h2>Projetos de extensão</h2>
+        <p class="muted">Projetos dos quais este aluno participa.</p>
+
+        <div class="student-projects">
+            {% for projeto in aluno.projetos.all %}
+            <a class="student-project" href="{% url 'detalhe_projeto' projeto.id %}">
+                <span>
+                    <small>{{ projeto.categoria.nome }}</small>
+                    <strong>{{ projeto.titulo }}</strong>
+                </span>
+                <span>→</span>
+            </a>
+            {% empty %}
+            <p>Este aluno ainda não participa de nenhum projeto.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

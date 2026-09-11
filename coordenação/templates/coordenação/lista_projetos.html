@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Projetos de Extensão{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <span class="eyebrow">IFRN • EXTENSÃO</span>
+    <h1>Projetos de Extensão</h1>
+    <p>Conheça os projetos desenvolvidos pelos alunos e suas contribuições para a comunidade.</p>
+</section>
+
+<section class="section-heading">
+    <div>
+        <span class="eyebrow">CATÁLOGO ACADÊMICO</span>
+        <h2>Projetos cadastrados</h2>
+    </div>
+    <span class="counter">{{ projetos|length }} projetos</span>
+</section>
+
+{% if projetos %}
+<div class="project-grid">
+    {% for projeto in projetos %}
+    <article class="project-card">
+        <div class="card-top">
+            <span class="number">{{ forloop.counter|stringformat:"02d" }}</span>
+            <span class="tag">{{ projeto.categoria.nome }}</span>
+        </div>
+        <h3>{{ projeto.titulo }}</h3>
+        <p class="muted">Início: {{ projeto.data_inicio|date:"d/m/Y" }}</p>
+        <a class="button" href="{% url 'detalhe_projeto' projeto.id %}">Ver projeto →</a>
+    </article>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty">
+    <h3>Nenhum projeto cadastrado</h3>
+    <p>Acesse o painel administrativo para cadastrar o primeiro projeto.</p>
+    <a class="button" href="/admin/">Acessar administração</a>
+</div>
+{% endif %}
+{% endblock %}
